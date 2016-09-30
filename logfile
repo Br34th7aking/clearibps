@@ -10,4 +10,9 @@ logs
 7. added the categories. picked to do it without php because a. categories in html will be handled by the browser. b. it seemed easier to do this way
 8. added some css. now the categories and topics are looking good. 
 9. added an admin page. now the 'admin' user is taken to a separate dashboard. He/She can add questions from here. 
+10. note: in the current setup, when admin enters a question, he should also enter the solution in the solutions table. questionId and solutionId should match.
+
+11. Adding questions is now working. Making the commit and going to bed...
+
+
 
