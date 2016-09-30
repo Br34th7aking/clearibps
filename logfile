@@ -3,3 +3,11 @@ logs
 
 1. created the tables user, category and topic. 
 2. Added the topics. 
+3. Finished the login script.
+4. Finished signup script. 
+5. Added logout script. 
+6. populated the index page with categories and added some css.
+7. added the categories. picked to do it without php because a. categories in html will be handled by the browser. b. it seemed easier to do this way
+8. added some css. now the categories and topics are looking good. 
+9. added an admin page. now the 'admin' user is taken to a separate dashboard. He/She can add questions from here. 
+

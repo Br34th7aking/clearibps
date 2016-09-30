@@ -35,10 +35,19 @@
 
 						$_SESSION['userId'] = $row['userId'];
 						$_SESSION['username'] = $row['username'];
+						$_SESSION['usertype'] = $row['usertype'];
 
-						//redirect to home page.
-						$home_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/index.php";
-						header("Location:" . $home_url);
+						if($_SESSION['usertype'] == 'admin') {
+							//send admin to admindash.php
+							$home_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/admindash.php";
+							header("Location:" . $home_url);
+						} 
+						else {
+							//redirect normal user to home page.
+							$home_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/index.php";
+							header("Location:" . $home_url);
+						}
+						
 					}
 					else {
 						$error_message = "Invalid Username or Password. Please enter correct details.";
