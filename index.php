@@ -15,8 +15,19 @@
 		<?php
 
 			session_start();
+
 			if(isset($_SESSION['userId'])) {
+			
 				//user is logged in.
+
+			if ($_SESSION['usertype'] == 'admin') {
+
+				$home_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/admindash.php";
+				header("Location:" . $home_url);
+
+			}
+			else {
+
 
 			$currentUser = $_SESSION['username'];
 			$currentUserId = $_SESSION['userId'];
@@ -52,47 +63,52 @@
 			</div>
 			<!-- topic list -->
 			<div class="topic-list">
-				<div class="topic col-md-3 topic-reasoning">Logical Reasoning</div>
-				<div class="topic col-md-3 topic-reasoning">Syllogism</div>
-				<div class="topic col-md-3 topic-reasoning">Blood Relations</div>
-				<div class="topic col-md-3 topic-reasoning">Input - Output</div>
-				<div class="topic col-md-3 topic-reasoning">Coding - Decoding</div>
-				<div class="topic col-md-3 topic-reasoning">Alphanumeric Series</div>
-				<div class="topic col-md-3 topic-reasoning">Ranking</div>
-				<div class="topic col-md-3 topic-reasoning">Data Sufficiency</div>
-				<div class="topic col-md-3 topic-reasoning">Coded Inequalities</div>
-				<div class="topic col-md-3 topic-reasoning">Seating Arrangement</div>
-				<div class="topic col-md-3 topic-reasoning">Puzzles</div>
-				<div class="topic col-md-3 topic-reasoning">Tabulation</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Simplification</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Ratio and Proportion</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Percentage</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Number System</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Profit and Loss</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Simple Interest</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Compound Interest</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Surds and Indices</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Alligations</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Work and Time</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Time and Distance</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Mensuration</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Sequences and Series</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Permutations and Combinations</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Probability</div>
-				<div class="topic col-md-3 topic-quantitative-aptitude">Data Interpretation</div>
-				<div class="topic col-md-3 topic-general-awareness">Current Affairs</div>
-				<div class="topic col-md-3 topic-general-awareness">Banking Awareness</div>
-				<div class="topic col-md-3 topic-general-awareness">Marketing</div>
-				<div class="topic col-md-3 topic-computer">Hardware and Software</div>
-				<div class="topic col-md-3 topic-computer">Database</div>
-				<div class="topic col-md-3 topic-computer">Network and Internet</div>
-				<div class="topic col-md-3 topic-computer">Number System</div>
-				<div class="topic col-md-3 topic-computer">Security</div>
-				<div class="topic col-md-3 topic-computer">MS Windows and Office</div>
+				<form method="post" action="test.php"> 
+				<!-- enclose topics in a form to send their value to test.php -->
+					<button type="submit" name="topic" value="1" class="topic col-md-3 topic-reasoning">Logical Reasoning</button>
+					<button type="submit" name="topic" value="2" class="topic col-md-3 topic-reasoning">Syllogism</button>
+					<button type="submit" name="topic" value="3" class="topic col-md-3 topic-reasoning">Blood Relations</button>
+					<button type="submit" name="topic" value="4" class="topic col-md-3 topic-reasoning">Input - Output</button>
+					<button type="submit" name="topic" value="5" class="topic col-md-3 topic-reasoning">Coding - Decoding</button>
+					<button type="submit" name="topic" value="6" class="topic col-md-3 topic-reasoning">Alphanumeric Series</button>
+					<button type="submit" name="topic" value="7" class="topic col-md-3 topic-reasoning">Ranking</button>
+					<button type="submit" name="topic" value="8" class="topic col-md-3 topic-reasoning">Data Sufficiency</button>
+					<button type="submit" name="topic" value="9" class="topic col-md-3 topic-reasoning">Coded Inequalities</button>
+					<button type="submit" name="topic" value="10" class="topic col-md-3 topic-reasoning">Seating Arrangement</button>
+					<button type="submit" name="topic" value="11" class="topic col-md-3 topic-reasoning">Puzzles</button>
+					<button type="submit" name="topic" value="12" class="topic col-md-3 topic-reasoning">Tabulation</button>
+					<button type="submit" name="topic" value="13" class="topic col-md-3 topic-quantitative-aptitude">Simplification</button>
+					<button type="submit" name="topic" value="14" class="topic col-md-3 topic-quantitative-aptitude">Ratio and Proportion</button>
+					<button type="submit" name="topic" value="15" class="topic col-md-3 topic-quantitative-aptitude">Percentage</button>
+					<button type="submit" name="topic" value="16" class="topic col-md-3 topic-quantitative-aptitude">Number System</button>
+					<button type="submit" name="topic" value="17" class="topic col-md-3 topic-quantitative-aptitude">Profit and Loss</button>
+					<button type="submit" name="topic" value="18" class="topic col-md-3 topic-quantitative-aptitude">Simple Interest</button>
+					<button type="submit" name="topic" value="19" class="topic col-md-3 topic-quantitative-aptitude">Compound Interest</button>
+					<button type="submit" name="topic" value="20" class="topic col-md-3 topic-quantitative-aptitude">Surds and Indices</button>
+					<button type="submit" name="topic" value="21" class="topic col-md-3 topic-quantitative-aptitude">Alligations</button>
+					<button type="submit" name="topic" value="22" class="topic col-md-3 topic-quantitative-aptitude">Work and Time</button>
+					<button type="submit" name="topic" value="23" class="topic col-md-3 topic-quantitative-aptitude">Time and Distance</button>
+					<button type="submit" name="topic" value="24" class="topic col-md-3 topic-quantitative-aptitude">Mensuration</button>
+					<button type="submit" name="topic" value="25" class="topic col-md-3 topic-quantitative-aptitude">Sequences and Series</button>
+					<button type="submit" name="topic" value="26" class="topic col-md-3 topic-quantitative-aptitude">Permutations and Combinations</button>
+					<button type="submit" name="topic" value="27" class="topic col-md-3 topic-quantitative-aptitude">Probability</button>
+					<button type="submit" name="topic" value="28" class="topic col-md-3 topic-quantitative-aptitude">Data Interpretation</button>
+					<button type="submit" name="topic" value="29" class="topic col-md-3 topic-general-awareness">Current Affairs</button>
+					<button type="submit" name="topic" value="30" class="topic col-md-3 topic-general-awareness">Banking Awareness</button>
+					<button type="submit" name="topic" value="31" class="topic col-md-3 topic-general-awareness">Marketing</button>
+					<button type="submit" name="topic" value="32" class="topic col-md-3 topic-computer">Hardware and Software</button>
+					<button type="submit" name="topic" value="33" class="topic col-md-3 topic-computer">Database</button>
+					<button type="submit" name="topic" value="34" class="topic col-md-3 topic-computer">Network and Internet</button>
+					<button type="submit" name="topic" value="35" class="topic col-md-3 topic-computer">Number System</button>
+					<button type="submit" name="topic" value="36" class="topic col-md-3 topic-computer">Security</button>
+					<button type="submit" name="topic" value="37" class="topic col-md-3 topic-computer">MS Windows and Office</button>
+				</form>
+
 
 			</div>
 
 			<?php
+			}
 			}
 
 			else {

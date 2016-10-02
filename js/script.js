@@ -58,5 +58,15 @@ $(document).ready(function() {
 		$(".category-list").show();
 	});
 
+/*
+	// on clicking any topic user should be taken to test.php
+	$(".topic").click(function() {
 
+		window.location.href="http://localhost/Websites/clearibps/test.php";
+		//console.log(window.location.href);
+		// get the id of this attribute
+
+
+	});
+*/
 });

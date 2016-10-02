@@ -112,27 +112,31 @@
 
 		$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME) or die("Error connecting to database @ addquestion.php");
 
-		//set the variables.
-		$statement = $_POST['statement'];
-		$option1 = $_POST['option1'];
-		$option2 = $_POST['option2'];
-		$option3 = $_POST['option3'];
-		$option4 = $_POST['option4'];
-		$correctans = $_POST['correctans'];
-		$imageUrl = $_POST['imagepath'];
-		$solution = $_POST['solution'];
-		$topicId = $_POST['topic'];
+		if (isset($_POST['statement'])) {
+				//set the variables.
+			$statement = $_POST['statement'];
+			$option1 = $_POST['option1'];
+			$option2 = $_POST['option2'];
+			$option3 = $_POST['option3'];
+			$option4 = $_POST['option4'];
+			$correctans = $_POST['correctans'];
+			$imageUrl = $_POST['imagepath'];
+			$solution = $_POST['solution'];
+			$topicId = $_POST['topic'];
 
-		// add the question
-		$query_question = "INSERT into questionbank (statement, option1, option2, option3, option4, correctans, topicId,imagepath)
-						   VALUES ('$statement', '$option1', '$option2', '$option3', '$option4', '$correctans', '$topicId', '$imageUrl')";
+	//		echo $topicId;
+			
 
-		$addQues = mysqli_query($dbc, $query_question) or die("Error adding question");
+			// add the question
+			$query_question = "INSERT into questionbank (statement, option1, option2, option3, option4, correctans, topicId, imagepath, solution)
+							   VALUES ('$statement', '$option1', '$option2', '$option3', '$option4', '$correctans', '$topicId', '$imageUrl',   
+							    '$solution')";
 
-		// add the solution
-		$query_solution = "INSERT into solutions (solution) VALUES('$solution')";
-		$addSol = mysqli_query($dbc, $query_solution) or die("Error adding solution");
+			$addQues = mysqli_query($dbc, $query_question) or trigger_error(mysqli_error()." in ".$query_question);
 
+
+		}
+		
 		mysqli_close($dbc);
 	?>
 </body>

@@ -76,6 +76,7 @@ html, body {
 
 .topic:hover {
 	cursor: pointer;
+	
 }
 /* media queries */
 @media (max-width: 400px) {

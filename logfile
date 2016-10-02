@@ -14,5 +14,13 @@ logs
 
 11. Adding questions is now working. Making the commit and going to bed...
 
+Oct 1, 2016
+-------------
+1. used a form and added buttons to the topic list. Now when the user clicks the button, it's value will be passed to test.php 
+   the values are taken as integers, so going to add a file with topic id and topic name.
+
+1.5 Now test.php knows which button was clicked. So, the topic list is clear. 
+
+2. 
 
 
