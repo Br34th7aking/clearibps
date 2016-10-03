@@ -31,9 +31,9 @@
 		else {
 			$i = 1; // question counter
 		?>
-
 		<!-- display the timer -->
 		<div class='timer'>
+			<span>Time Left: </span>
 			<span class="minutes-digit-1"></span>
 			<span class="minutes-digit-2"></span>		
 			<span class="time-separator">:</span>
@@ -80,6 +80,7 @@
 			<input type='submit' id='submit-test' class='hidden'>
 			</div>
 		</form>
+
 		<!-- sidebar -->
 		<div class="sidebar"> 
 			<h3>Question Overview</h3>
@@ -90,11 +91,19 @@
 					$quesNum++;
 				}
 			?>
+			<div class="color-key">
+				<div class="color-item"><div class="color-box" id="attempted"></div>Attempted</div>
+				<div class="color-item"><div class="color-box" id="not-attempted"></div>Not Attempted</div>
+				<div class="color-item"><div class="color-box" id="review"></div>Review</div>
+				<div class="color-item"><div class="color-box" id="not-viewed"></div>Not Viewed Yet</div>
+			</div>
 		</div>
 			<!-- next and previous buttons -->
 			<div class='footer-buttons'>
 				<div class=" quiz-button next-button">Next</div>
-				<div class=" quiz-button prev-button">Previous</div>
+				<div class=" quiz-button uncheck">Clear Response</div>
+				<!--<div class=" quiz-button prev-button">Previous</div>-->
+				<div class=" quiz-button review-button">Mark for Review</div>				
 			
 
 				<div class='submit-button'><label for='submit-test'>Submit</label></div>

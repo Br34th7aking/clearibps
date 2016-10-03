@@ -21,6 +21,17 @@ Oct 1, 2016
 
 1.5 Now test.php knows which button was clicked. So, the topic list is clear. 
 
-2. 
+2. added some css to test ui.
+
+
+Oct 3, 2016
+-----------
+1. Still working on the test ui. Added color change on side bar question numbers.
+2. Removed the previous button. Added mark for review button.
+3. Sidebar question numbers are changing colors nicely on answered, marked for review and 'seen but unanswered'.
+4. Added the clear response feature. 
+5. Cleaned up the css for timer. Now it looks more clear
+6. Added the color key to the sidebar. 
+
 
 

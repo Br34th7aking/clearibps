@@ -62,19 +62,28 @@ function init() {
 // clicking next button should move to next question.
 function nextQuestion(current) {
 	//show the previous button.
-	$(".prev-button").show();
+//	$(".prev-button").show();
 	//hide the current question.
 	$("#question" + current).hide();
 	//display next question
 	var next = current + 1;
-	$("#question" + next).show();
-	i++;
+// if the questionId is less than total questions
+	if(next <= totalQuestions) {
+		$("#question" + next).show();
+		i++;
+	} else {
+		//just show the last question.
+		$("#question" + current).show();
+	}
+	
+	/*
 	if (i == totalQuestions) {
 		$(".next-button").hide();
 	}
+	*/
 	//console.log(i);
 }
-
+/*
 // move to previous question.
 function prevQuestion(current) {
 	i--;
@@ -93,7 +102,7 @@ function prevQuestion(current) {
 	//console.log(i);
 }
 
-
+*/
 $(document).ready(function() {
 
 	init(); // initial display and start timer
@@ -116,10 +125,70 @@ $(document).ready(function() {
 	
 
 	$(".next-button").click(function() {
+		// if the current question is unanswered, then  set the color of question number in sidebar
+		/*
+		if (("#question" + i).find("input:radio:checked").length > 0) {
+			console.log("ok");
+		}*/
+		//console.log("#question" + i);
+		if($("#question" + i).find("input:radio:checked").length == 0) {
+			// question has not been answered.
+			// check if it is not marked for review, for this, check the color of corresponding box in sidebar. it should be white
+			//console.log($("#"+i).css("background-color"));
+			if($("#" + i).css("background-color") == "rgb(255, 255, 255)") {
+			//	console.log("ok");
+				//question has not been marked for review.
+				//change the background of question box in sidebar
+				$("#" + i).css("background", "#ff5555");
+				$("#" + i).css("color", "#fff");
+			}
+			
+		}
 		nextQuestion(i);
 	});
-
+/*
 	$(".prev-button").click(function() {
 		prevQuestion(i);
 	});
+*/
+	// sidebar functionality
+	//when user clicks a question number, display that question. 
+	$(".question-num-sidebar").click(function() {
+		//first hide the current question
+		//console.log("ok");
+		$(".question").hide();
+		//now display the chosen question.
+		var current = $(this).attr('id');
+		$("#question" + current).show();
+		//change the value of global counter i
+		i = current;
+
+	});
+	//when a question is answered, change the color of ques number in sidebar
+	$(".option").click(function() {
+		//get the id of question from name attribute of child
+		var quesId = $(this).children().attr('name').slice(12, $(this).children().attr('name').length);
+		$("#" + quesId).css("background", "#bada55");
+		$("#" + quesId).css("color", "#fff");
+
+	});
+	// if question is marked for review change color of question number in sidebar
+	$(".review-button").click(function() {
+		// id of current question is in global variable i
+		$("#" + i).css("background", "#800080");
+		$("#" + i).css("color", "#fff");
+	});
+	
+
+	//uncheck answer
+	$(".uncheck").click(function() {
+		// set the color of current question box to red
+		$("#" + i).css("background", "#ff5555");
+		$("#" + i).css("color", "#fff");
+
+		//uncheck the answer and reset it's div's color. 
+		$("#question" + i ).find("input:radio").prop('checked', false);
+		$("#question" + i).children().css("background", "#fff");
+	});
+
 });
