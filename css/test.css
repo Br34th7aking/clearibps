@@ -7,6 +7,34 @@ body {
 	display: none;
 }
 
+/* css for instructions */
+.instructions {
+	width: 80%;
+	margin: 0 auto;
+	color: #666;
+	line-height: 1.5;
+	box-shadow: 1px 1px 3px #555;
+}
+.instructions-list {
+	padding: 10px;
+}
+
+.important {
+	color: #ff5555;
+}
+.begin-button {
+	text-align: center;
+	background: #3bbceb;
+	color: white;
+	margin:0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	letter-spacing: 1.2px;
+	
+}
+.begin-button:hover {
+	cursor: pointer;
+}
 
 
 /*css for the timer */
@@ -131,28 +159,49 @@ body {
 #not-attempted {
 	background: #ff5555;
 }
-/*buttons */
+
+.instructions-button {
+
+	transition: background-color 0.7s;
+	border: 1px solid #3bbceb;
+	color: #3bbceb;
+	margin-top: 50px;
+	padding: 10px;
+}
+.instructions-button:hover {
+	background-color: #3bbceb;
+	color: white;
+	cursor: pointer;
+}
+
+/* footer buttons */
 .footer-buttons {
 	position: fixed;
-	bottom: 20px;
+	bottom: 30px;
 	width: 100%;
 
 }
 .quiz-button{
+	transition: background-color 0.5s;
 	margin-left: 100px;
 	display: inline-block;
-	background: #3bbceb;
+	color: #3bbceb;
 	padding: 10px 30px;
-	color: white;
-	border-radius: 10px;
-	box-shadow: 2px 2px 5px #555;
+	/*color: #3bbceb;*/
+	/*border-radius: 10px;*/
+	border: 1px solid #3bbc99;
+	box-shadow: 1px 1px 3px #555;
 }
 
 .quiz-button:hover {
-	background: #25b5e9;
+	background: #3bbceb;
+	color: white;
 	cursor: pointer;
 }
-
+.next-button {
+	color: white;
+	background-color: #3bbceb;
+}
 /* hide the submit input field */
 .hidden {
 	display: none;

@@ -7,6 +7,31 @@
 	<script src="js/test.js"></script>
 </head>
 <body>
+	<div class="instructions">
+		<div class="instructions-list">
+		<h2>Instructions</h2>
+		<p>Please read the instructions carefully</p>
+		<h4>General Instructions</h4>
+		<ol>	
+			<li>The total duration of the test is <strong>20 minutes</strong>.</li>
+			<li>You can keep track of the time remaining, with the timer displayed in the test. Once the timer runs out, the test will be automatically submitted. However, if you want to submit the test early, just click the submit button.</li>
+			<li>Do <strong>NOT</strong> refresh the page while taking the test, or your progress will be reset.</li>
+			<li>Questions Marked for Review only indicate that you want to visit the question later. <span class="important">If you have selected an answer, and then marked the question for review, the last selected answer will be considered in evaluation.</span></li>
+			<li>There are a total of <strong>30 questions</strong> in the test. Each question carries <strong>one(1) mark</strong>.</li>
+			<li>For every wrong answer, <strong>one-fourth(0.25) marks will be deducted</strong> from your score.</li>
+			<li><strong>No marks will be deducted</strong> for an unanswered question.</li>
+
+		</ol>
+		<h4>Navigating to a question</h4>
+		<ol>
+			<li>You can move to any question by clicking the question number in the question palette provided.</li>
+			<li>You can click Next to move on to the next question.</li>
+			<li>You can click Mark for review to move on to the next question and mark the current question to review later</li>
+		</ol>
+		</div>
+		<div class="begin-button"><strong>Click Me to Start the Test</strong></div>
+		
+	</div>
 	<?php
 		require_once('connectVars.php');
 		require_once('topicIdandName.php');
@@ -97,6 +122,8 @@
 				<div class="color-item"><div class="color-box" id="review"></div>Review</div>
 				<div class="color-item"><div class="color-box" id="not-viewed"></div>Not Viewed Yet</div>
 			</div>
+			<!-- instructions button -->
+			<div class="instructions-button">Instructions</div>
 		</div>
 			<!-- next and previous buttons -->
 			<div class='footer-buttons'>

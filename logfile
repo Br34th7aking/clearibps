@@ -32,6 +32,11 @@ Oct 3, 2016
 4. Added the clear response feature. 
 5. Cleaned up the css for timer. Now it looks more clear
 6. Added the color key to the sidebar. 
+7. Added the instructions section. Modified code to show instructions first.
+8. User can now see instructions by clicking  ab button during test.
+   Note:- Ran into a problem here. I was trying to be smart and achieve two functionalities with same button, by adding and removing classes. It turned out that the button would still obey the rules of the first class. Due to this, two timers were being displayed at the same spot, resulting in a weird counter. To solve this, I added an if-then statement to the button's functionality. The first time it is clicked it behaves in a certain way, and for all further clicks the behaviour is different. (using a boolean to test this). Issue resolved!
+
+9. Hover effect on options is not working after selecting an answer.
 
 
 

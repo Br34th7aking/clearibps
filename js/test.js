@@ -51,10 +51,16 @@ function countdown(t) {
 
 // set initial display
 function init() {
-	// display only the first question of the test.
-	$("#question" + i).show();
-	// also hide the previous button.
-	$(".prev-button").hide();
+	
+		// display only the first question of the test.
+		$("#question" + i).show();
+		// also hide the previous button.
+	//	$(".prev-button").hide();
+	$(".sidebar").show();
+	$(".timer").show();
+	$(".quiz-button").show();
+	$(".submit-button").show();
+	$(".instructions").hide();
 
 	countdown(20); // starts the timer for 20 mins
 }
@@ -104,9 +110,26 @@ function prevQuestion(current) {
 
 */
 $(document).ready(function() {
-
-	init(); // initial display and start timer
-
+	//befor the test begins, keep everything hidden except the instructions.
+	$(".sidebar").hide();
+	$(".timer").hide();
+	$(".quiz-button").hide();
+	$(".submit-button").hide();
+	//initial display and timer
+	var testActive = false;
+	$(".begin-button").click(function() {
+		if(!testActive) {
+			init();
+			testActive = true;
+		} else {
+			$(".sidebar").show();
+			$(".quiz-button").show();
+			$("#question" + i).show();
+			$(".submit-button").show();
+			$(".instructions").hide();
+		}
+	});
+	
 
 	//change color of selected div when user selects an answer.
 	$("input").change(function() {
@@ -189,6 +212,16 @@ $(document).ready(function() {
 		//uncheck the answer and reset it's div's color. 
 		$("#question" + i ).find("input:radio").prop('checked', false);
 		$("#question" + i).children().css("background", "#fff");
+	});
+	$(".instructions-button").click(function() {
+		$(".sidebar").hide();
+		$(".question").hide();
+		$(".quiz-button").hide();
+		$(".submit-button").hide();
+		//change the begin-button to back button
+		
+		$(".begin-button").html("Back to Test");
+		$(".instructions").show();
 	});
 
 });
