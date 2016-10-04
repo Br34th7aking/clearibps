@@ -81,12 +81,17 @@
 				<input id="Option4" type="text" name="option4">
 			</div>
 			<div>
+				<label for="Option5">Option 5</label>
+				<input id="Option5" type="text" name="option5">
+			</div>
+			<div>
 				<label for="correctans">Correct Answer</label>
 				<select name="correctans" id="correctans">
 					<option value="a">A</option>
 					<option value="b">B</option>
 					<option value="c">C</option>
 					<option value="d">D</option>
+					<option value="e">E</option>
 				</select>
 			</div>
 			<div>
@@ -128,8 +133,8 @@
 			
 
 			// add the question
-			$query_question = "INSERT into questionbank (statement, option1, option2, option3, option4, correctans, topicId, imagepath, solution)
-							   VALUES ('$statement', '$option1', '$option2', '$option3', '$option4', '$correctans', '$topicId', '$imageUrl',   
+			$query_question = "INSERT into questionbank (statement, option1, option2, option3, option4, option5, correctans, topicId, imagepath, solution)
+							   VALUES ('$statement', '$option1', '$option2', '$option3', '$option4', '$option5', '$correctans', '$topicId', '$imageUrl',   
 							    '$solution')";
 
 			$addQues = mysqli_query($dbc, $query_question) or trigger_error(mysqli_error()." in ".$query_question);

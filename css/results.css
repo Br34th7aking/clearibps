@@ -1,0 +1,36 @@
+
+.title {
+	width: 100%;
+	text-align: center;
+}
+/* table */
+table {
+	margin: 0 auto;
+	border-collapse: collapse;
+	text-align: left;
+	font-size: 20px;
+	box-shadow: 1px 1px 3px #888;
+}
+table, tr,td {
+	border: 1px solid #888;
+}
+td {
+	padding: 10px 40px;
+}
+.score {
+	background: #2fbe6d;
+	color: white;
+	font-weight: bold;
+}
+hr {
+	width: 70%;
+
+}
+
+.time-analysis {
+	
+}
+
+.hidden {
+	display: none;
+}

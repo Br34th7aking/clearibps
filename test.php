@@ -90,10 +90,11 @@
 				if(!empty($imagepath)) {
 					echo "<div class='question-image'>$imagepath</div>";
 				}
-				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-a'><div class='circle-letter'>A</div> $option1</label>";
-				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-b'><div class='circle-letter'>B</div> $option2</label>";
+				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-a'><div class='circle-letter'>A </div> $option1</label>";
+				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-b'><div class='circle-letter'>B </div> $option2</label>";
 				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-c'><div class='circle-letter'>C </div>$option3</label>";
 				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-d'><div class='circle-letter'>D </div>$option4</label>";
+				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-e'><div class='circle-letter'>E </div>$option4</label>";
 				echo "</div>";
 		
 		

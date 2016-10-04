@@ -62,6 +62,10 @@ function init() {
 	$(".submit-button").show();
 	$(".instructions").hide();
 
+	//show first question box as unattempted
+	$("#" + i).css("background", "#ff5555");
+	$("#" + i).css("color", "#fff");
+
 	countdown(20); // starts the timer for 20 mins
 }
 
@@ -72,7 +76,9 @@ function nextQuestion(current) {
 	//hide the current question.
 	$("#question" + current).hide();
 	//display next question
-	var next = current + 1;
+//	console.log("current " + current);
+	var next = parseInt(current) + 1;
+//	console.log("next " + next);
 // if the questionId is less than total questions
 	if(next <= totalQuestions) {
 		$("#question" + next).show();
@@ -87,7 +93,7 @@ function nextQuestion(current) {
 		$(".next-button").hide();
 	}
 	*/
-	//console.log(i);
+//	console.log(i);
 }
 /*
 // move to previous question.
@@ -137,7 +143,8 @@ $(document).ready(function() {
 		if ((this).checked) {
 			$(this).parent().css("background", "#caebf2");
 			// reset the background of previously selected input, if any.
-			$('input[type="radio"]:not(:checked)').parent().css("background", "#fff");
+			$('input[type="radio"]:not(:checked)').parent().css("background", "");
+
 		} 
 	});
 
@@ -154,6 +161,7 @@ $(document).ready(function() {
 			console.log("ok");
 		}*/
 		//console.log("#question" + i);
+		nextQuestion(i);
 		if($("#question" + i).find("input:radio:checked").length == 0) {
 			// question has not been answered.
 			// check if it is not marked for review, for this, check the color of corresponding box in sidebar. it should be white
@@ -167,7 +175,7 @@ $(document).ready(function() {
 			}
 			
 		}
-		nextQuestion(i);
+		
 	});
 /*
 	$(".prev-button").click(function() {
@@ -183,8 +191,15 @@ $(document).ready(function() {
 		//now display the chosen question.
 		var current = $(this).attr('id');
 		$("#question" + current).show();
+		//change the color to question number box to 'not attempted' color, if the question is not checked.
+		if ($("#question" + current).find("input:radio:checked").length == 0) {
+			//answer is not marked.
+			$("#" + current).css("background-color", "#ff5555");
+			$("#" + current).css("color", "#fff");
+		}
 		//change the value of global counter i
 		i = current;
+	//	console.log(i);
 
 	});
 	//when a question is answered, change the color of ques number in sidebar
