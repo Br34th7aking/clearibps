@@ -68,6 +68,7 @@
 		<form method="post" action="results.php">
 		<div class="question-wrapper">
 		<?php
+			echo "<input type='text' class='hidden' id='totalTimeTaken' name='totalTimeTaken' value='0'>"; // for total time
 			while ($row = mysqli_fetch_array($questions)) {
 
 				//set up the variables.
@@ -77,11 +78,13 @@
 				$option2 = $row['option2'];
 				$option3 = $row['option3'];
 				$option4 = $row['option4'];
+				$option5 = $row['option5'];
 				$imagepath = $row['imagepath'];
 
 				
 		
 				echo "<div class='question' id='question$i'>
+				<input type='text' class='hidden' id='time-taken$i' name='time-taken$i' value='0'>
 					  <h2> Question $i</h2>
 					  <hr>	
 					  <div class='statement'>$statement</div>";
@@ -94,7 +97,7 @@
 				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-b'><div class='circle-letter'>B </div> $option2</label>";
 				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-c'><div class='circle-letter'>C </div>$option3</label>";
 				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-d'><div class='circle-letter'>D </div>$option4</label>";
-				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-e'><div class='circle-letter'>E </div>$option4</label>";
+				echo "<label class='option'><input type='radio' class='hidden' name='ans-question$i' value='$questionId-e'><div class='circle-letter'>E </div>$option5</label>";
 				echo "</div>";
 		
 		

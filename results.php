@@ -17,6 +17,12 @@
 	$totalCorrect = 0;
 	$totalWrong = 0;
 	$score = 0;
+
+	// time variables (in secs.)
+	$timeCorrectAnswer = 0;
+	$timeWrongAnswer = 0;
+	$timeUnanswered = 0;
+
 	// connect to database
 	$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
@@ -36,15 +42,22 @@
 			$result = mysqli_query($dbc, $query);
 			$row = mysqli_fetch_array($result);
 
+			$timetaken = intval($_POST["time-taken$i"]);
 			// check the answers. 
 			if ($userChoice == $row['correctans']) {
 				
+				$timeCorrectAnswer += $timetaken;
 				$totalCorrect++;
 				$score++;
 			} else {
 				$totalWrong++;
+				$timeWrongAnswer += $timetaken;
 				$score -= 0.25;
 			}
+
+			// get the value of total time
+			$totalTime = intval($_POST["totalTimeTaken"]);
+			$timeUnanswered = $totalTime  - ($timeCorrectAnswer + $timeWrongAnswer);
 		}
 		
 		$i++; // go to next question
@@ -56,8 +69,14 @@
 <div value = "<?php echo $totalCorrect; ?>" class="hidden correct"></div>
 <div value = "<?php echo $totalWrong; ?>" class="hidden wrong">$totalWrong</div>
 <div value = "<?php echo $totalQuestions - ($totalCorrect + $totalWrong); ?>" class="hidden unanswered">$score</div>
-<div value = "" class="hidden"></div>
-<div value = "" class="hidden"></div>
+
+
+<!-- for time bar graph -->
+<div value = "<?php echo $timeCorrectAnswer?>" class="hidden timeCorrectAnswer"></div>
+<div value = "<?php echo $timeWrongAnswer?>" class="hidden timeWrongAnswer"></div>
+<div value = "<?php echo $timeUnanswered?>" class="hidden timeUnanswered"></div>
+<div value = "<?php echo $totalTime?>" class="hidden totalTime"></div>
+
 
 	<div class="title summary">
 		<h2>Summary</h2>
@@ -89,11 +108,49 @@
 		<h1 class="title">Detailed Analysis</h1>
 		<div class="circle-graph">
 			<h2>Your Performance</h2>
-			<canvas id="circle-graph" height="50"></canvas>
+			<canvas id="circle-graph" height="40"></canvas>
 		</div>
 		<div class="time-analysis">
 			<h2>Time Analysis</h2>
+			<?php
+				//minutes
+				$minutes = floor($totalTime / 60); // 1min = 60s
+				$seconds = $totalTime - ($minutes * 60);
+			?>
+			
+			<table>
+			<tr>
+				<th>Time Spent</th> 
+				<th>Percentage (%)</th>
+			</tr>
+			<tr>
+				<td>Correct Answers</td>
+				<td><?php echo round(($timeCorrectAnswer * 100) / $totalTime, 1);?></td>
+			</tr>
+			<tr>
+				<td>Wrong Answers</td>
+				<td><?php echo round(($timeWrongAnswer * 100) / $totalTime, 1); ?></td>
+			</tr>
+			<tr>
+				<td>Unanswered</td>
+				<td><?php echo round(($timeUnanswered * 100) / $totalTime, 1);?></td>
+			</tr>
+			<tr class="totalTime">
+				<td>Total Time Taken</td>
+				<td><?php echo "$minutes min  $seconds sec"?></td>
+			</tr>
+		</table> 
+		
 		</div>
+		<hr>
+		<div class="suggestions">
+			<h1>How can you Improve?</h1>
+			<div class="suggestion-box">
+				<div class="suggestion-on-answers"></div>
+				<div class="suggestion-on-time"></div>
+			</div>
+		</div>
+		<div class="back-button">Back to Home</div>
 	</div>
 </body>
 </html>

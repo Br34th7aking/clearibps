@@ -53,6 +53,9 @@ Goals: Add 5th option to answers, Figure out how to display result data and  sto
 	   To solve this, i created a few hidden divs and stored the value of these variables into their 'value' attribute. Then accessed these attributes in jquery and stored them into variables. 
 
 
+5. Added timer code, this seems to work. but  i will have to modify it later. 
+6. Added code for result data. 
+
 
 
 

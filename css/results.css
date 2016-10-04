@@ -8,16 +8,16 @@ table {
 	margin: 0 auto;
 	border-collapse: collapse;
 	text-align: left;
-	font-size: 20px;
+	font-size: 18px;
 	box-shadow: 1px 1px 3px #888;
 }
-table, tr,td {
+table, tr,td, th {
 	border: 1px solid #888;
 }
 td {
 	padding: 10px 40px;
 }
-.score {
+.score, .totalTime {
 	background: #2fbe6d;
 	color: white;
 	font-weight: bold;
@@ -33,4 +33,36 @@ hr {
 
 .hidden {
 	display: none;
+}
+.suggestions {
+	
+	text-align: center;
+}
+.suggestion-box {
+
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 30px;
+	font-size: 20px;
+	background-color: #2fbe6d;
+	color: white;
+	padding: 20px 50px;
+}
+.back-button {
+
+	transition: background-color 0.5s;
+	margin-left: 45%;
+	display: inline-block;
+	margin-top: 20px;
+	padding: 10px 30px;
+	color: #3bbceb;
+	/*border-radius: 10px;*/
+	border: 1px solid #3bbc99;
+	box-shadow: 1px 1px 3px #555;
+}
+
+.back-button:hover {
+	background: #3bbceb;
+	color: white;
+	cursor: pointer;
 }

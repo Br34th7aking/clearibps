@@ -2,6 +2,8 @@
 
 var i = 1; //question counter
 var totalQuestions = 10; // this is the number of questions in the test. 
+var elapsed = 0; // to track time spent per question.
+var totalTimeTaken = 0; // to track how much time user took before finishing.
 
 //set a timer for t minutes.
 function countdown(t) {
@@ -40,6 +42,10 @@ function countdown(t) {
 			minutesDigit1--;
 		}
 
+		//increase timespent in sec.
+		elapsed++;
+		totalTimeTaken++;
+
 		if((minutesDigit1 == 0) && (minutesDigit2 == 0) && (secondsDigit1 == 0) && (secondsDigit2 == 0)) {
 			//time's up
 			clearInterval(timer);
@@ -52,9 +58,9 @@ function countdown(t) {
 // set initial display
 function init() {
 	
-		// display only the first question of the test.
-		$("#question" + i).show();
-		// also hide the previous button.
+	// display only the first question of the test.
+	$("#question" + i).show();
+	// also hide the previous button.
 	//	$(".prev-button").hide();
 	$(".sidebar").show();
 	$(".timer").show();
@@ -66,20 +72,24 @@ function init() {
 	$("#" + i).css("background", "#ff5555");
 	$("#" + i).css("color", "#fff");
 
+	// initialize the time spent variable for current question.
+	start = new Date();
+
 	countdown(20); // starts the timer for 20 mins
+
 }
 
 // clicking next button should move to next question.
 function nextQuestion(current) {
 	//show the previous button.
-//	$(".prev-button").show();
+	//	$(".prev-button").show();
 	//hide the current question.
 	$("#question" + current).hide();
 	//display next question
-//	console.log("current " + current);
+	//	console.log("current " + current);
 	var next = parseInt(current) + 1;
-//	console.log("next " + next);
-// if the questionId is less than total questions
+	//	console.log("next " + next);
+	// if the questionId is less than total questions
 	if(next <= totalQuestions) {
 		$("#question" + next).show();
 		i++;
@@ -88,33 +98,26 @@ function nextQuestion(current) {
 		$("#question" + current).show();
 	}
 	
-	/*
-	if (i == totalQuestions) {
-		$(".next-button").hide();
-	}
-	*/
-//	console.log(i);
-}
-/*
-// move to previous question.
-function prevQuestion(current) {
-	i--;
-	if(i == 1) {
-		// there is no previous question
-		$(".prev-button").hide();
-	}
-	//show the next button.
-	$(".next-button").show();
-	//hide the current question.
-	$("#question" + current).hide();
-	//display next question
-	var prev = current - 1;
-	$("#question" + prev).show();
 	
-	//console.log(i);
 }
 
-*/
+function storeTime(current) {
+	
+	
+	var prevTimeTaken = parseInt($("#time-taken" + current).attr('value'));
+//	console.log("prev time: " + prevTimeTaken);
+	var newTimeTaken = (prevTimeTaken + elapsed);  
+	
+	$("#time-taken" + current).attr('value', newTimeTaken);
+	//console.log($("#time-taken" + current).attr('value'));
+	//reset counter for next question
+	elapsed = 0;
+	console.log("Time spent on question " + current +" :" +  $("#time-taken" + current).attr('value'));
+
+
+}
+
+
 $(document).ready(function() {
 	//befor the test begins, keep everything hidden except the instructions.
 	$(".sidebar").hide();
@@ -161,6 +164,10 @@ $(document).ready(function() {
 			console.log("ok");
 		}*/
 		//console.log("#question" + i);
+		// store time spent on current question
+		storeTime(i);
+
+
 		nextQuestion(i);
 		if($("#question" + i).find("input:radio:checked").length == 0) {
 			// question has not been answered.
@@ -187,6 +194,8 @@ $(document).ready(function() {
 	$(".question-num-sidebar").click(function() {
 		//first hide the current question
 		//console.log("ok");
+		// store time elapsed
+		storeTime(i);
 		$(".question").hide();
 		//now display the chosen question.
 		var current = $(this).attr('id');
@@ -197,6 +206,7 @@ $(document).ready(function() {
 			$("#" + current).css("background-color", "#ff5555");
 			$("#" + current).css("color", "#fff");
 		}
+		
 		//change the value of global counter i
 		i = current;
 	//	console.log(i);
@@ -239,4 +249,8 @@ $(document).ready(function() {
 		$(".instructions").show();
 	});
 
+	$("form").submit(function() {
+		$("#totalTimeTaken").attr('value', totalTimeTaken);
+	});
+	// 
 });
