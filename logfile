@@ -49,12 +49,20 @@ Goals: Add 5th option to answers, Figure out how to display result data and  sto
 3. Added a summary table to the results page. 
 4. How I got the piechart working....
 	a. The first problem was canvas resizing. Solved it by setting the height of the canvas.
-	b. The enxt problem was to get the value of php variables to jquery function. 
+	b. The next problem was to get the value of php variables to jquery function. 
 	   To solve this, i created a few hidden divs and stored the value of these variables into their 'value' attribute. Then accessed these attributes in jquery and stored them into variables. 
 
 
 5. Added timer code, this seems to work. but  i will have to modify it later. 
 6. Added code for result data. 
+
+Oct 5, 2016
+-----------
+1. Rewrote the code for total time. Its working great now.
+2. Test results can now be added to database.
+3. User can now see topper's score in the test and compare. 
+
+
 
 
 

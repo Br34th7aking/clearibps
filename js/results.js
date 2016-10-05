@@ -22,13 +22,13 @@ $(document).ready(function() {
 			}]
 		}
 	});
-
+/*
 	//time chart - not yet implemented
 	var timeCorrectAnswer = $(".timeCorrectAnswer").attr('value');
 	var timeWrongAnswer = $(".timeWrongAnswer").attr('value');
 	var timeUnanswered = $(".timeUnanswered").attr('value');
 	var totalTime = $(".totalTime").attr('value');
-
+*/
 	
 	/*suggestions logic */
 	// on answers
@@ -44,8 +44,7 @@ $(document).ready(function() {
 	} else {
 		$(".suggestion-on-answers").html("Please study sincerely. Your current level is weak, and you have to improve a lot.");
 	}
-
-	/* suggestions on time */
+/* suggestions on time 
 	if(totalTime < 1450)  {
 		// total time for test is 1800 sec
 		$(".suggestion-on-time").html("You are not giving enough time to the test paper. Do not rush like that!");
@@ -62,7 +61,7 @@ $(document).ready(function() {
 		$(".suggestion-on-time").html("You are spending a lot of time on questions you don't answer or answer wrong. Do not rush and answer wisely");
 	}
 
-
+*/
 	$(".back-button").click(function() {
 		window.location = "index.php";
 	});

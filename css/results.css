@@ -59,6 +59,7 @@ hr {
 	/*border-radius: 10px;*/
 	border: 1px solid #3bbc99;
 	box-shadow: 1px 1px 3px #555;
+	text-align: center;
 }
 
 .back-button:hover {

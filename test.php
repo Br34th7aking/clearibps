@@ -66,6 +66,8 @@
 			<span class="seconds-digit-2"></span>
 		</div>
 		<form method="post" action="results.php">
+		<!-- hidden topic data for results.php-->
+		<input type="text" class="hidden" value="<?php echo $currentTopic; ?>" name="topic">
 		<div class="question-wrapper">
 		<?php
 			echo "<input type='text' class='hidden' id='totalTimeTaken' name='totalTimeTaken' value='0'>"; // for total time

@@ -2,10 +2,12 @@
 
 var i = 1; //question counter
 var totalQuestions = 10; // this is the number of questions in the test. 
-var elapsed = 0; // to track time spent per question.
-var totalTimeTaken = 0; // to track how much time user took before finishing.
+//var elapsed = 0; // to track time spent per question.
+//var totalTimeTaken = 0; // to track how much time user took before finishing.
 
 //set a timer for t minutes.
+var startTime = new Date();
+console.log(startTime);
 function countdown(t) {
 	
 	var secondsDigit1 = 0;
@@ -21,7 +23,7 @@ function countdown(t) {
 
 	var timer = setInterval(count, 1000);
 
-		function count() {
+	function count() {
 		
 		//update the timer digits every second
 		$(".minutes-digit-1").html(minutesDigit1);
@@ -41,11 +43,11 @@ function countdown(t) {
 			minutesDigit2 = 9;
 			minutesDigit1--;
 		}
-
+		/*
 		//increase timespent in sec.
 		elapsed++;
 		totalTimeTaken++;
-
+		*/
 		if((minutesDigit1 == 0) && (minutesDigit2 == 0) && (secondsDigit1 == 0) && (secondsDigit2 == 0)) {
 			//time's up
 			clearInterval(timer);
@@ -73,7 +75,7 @@ function init() {
 	$("#" + i).css("color", "#fff");
 
 	// initialize the time spent variable for current question.
-	start = new Date();
+	//start = new Date();
 
 	countdown(20); // starts the timer for 20 mins
 
@@ -98,10 +100,12 @@ function nextQuestion(current) {
 		$("#question" + current).show();
 	}
 	
+	//start time for this question.
+	startTime = new Date();
 	
 }
 
-function storeTime(current) {
+function storeTime(current, elapsed) {
 	
 	
 	var prevTimeTaken = parseInt($("#time-taken" + current).attr('value'));
@@ -111,7 +115,7 @@ function storeTime(current) {
 	$("#time-taken" + current).attr('value', newTimeTaken);
 	//console.log($("#time-taken" + current).attr('value'));
 	//reset counter for next question
-	elapsed = 0;
+	//elapsed = 0;
 	console.log("Time spent on question " + current +" :" +  $("#time-taken" + current).attr('value'));
 
 
@@ -165,8 +169,11 @@ $(document).ready(function() {
 		}*/
 		//console.log("#question" + i);
 		// store time spent on current question
-		storeTime(i);
-
+		
+		var endTime = new Date();
+		var elapsed = parseInt((endTime - startTime) / 1000); // converted to seconds
+		//console.log(elapsed);
+		storeTime(i, elapsed); // use the same logic with question palette
 
 		nextQuestion(i);
 		if($("#question" + i).find("input:radio:checked").length == 0) {
@@ -192,14 +199,21 @@ $(document).ready(function() {
 	// sidebar functionality
 	//when user clicks a question number, display that question. 
 	$(".question-num-sidebar").click(function() {
+		var endTime = new Date();
+		var elapsed = parseInt((endTime - startTime) / 1000); // converted to seconds
+		//console.log(elapsed);
+		storeTime(i, elapsed); // use the same logic with question palette
+
 		//first hide the current question
 		//console.log("ok");
 		// store time elapsed
-		storeTime(i);
+		//storeTime(i);
 		$(".question").hide();
 		//now display the chosen question.
 		var current = $(this).attr('id');
 		$("#question" + current).show();
+		//start time for this question.
+		startTime = new Date();
 		//change the color to question number box to 'not attempted' color, if the question is not checked.
 		if ($("#question" + current).find("input:radio:checked").length == 0) {
 			//answer is not marked.
@@ -250,7 +264,7 @@ $(document).ready(function() {
 	});
 
 	$("form").submit(function() {
-		$("#totalTimeTaken").attr('value', totalTimeTaken);
+		//$("#totalTimeTaken").attr('value', totalTimeTaken);
 	});
 	// 
 });
