@@ -63,7 +63,12 @@ Oct 5, 2016
 3. User can now see topper's score in the test and compare. 
 
 
-
+Oct 6, 2016
+------------
+1. Current user can also be the topper. Used an if-else to check if current user's score  > top score from database.
+2. Added modal for 'topping' the test. Will beautify it once I learn how to animate. 
+3. Added main and footer sections to the homepage. It is still using bootstrap, though i am slowly writing my own css.
+4. Embedded font awesome icons on homepage using their cdn.
 
 
 

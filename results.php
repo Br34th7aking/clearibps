@@ -99,6 +99,16 @@ $topic = $_POST['topic'];
 <div value = "<?php echo $timeUnanswered?>" class="hidden timeUnanswered"></div>
 <div value = "<?php echo $totalTime?>" class="hidden totalTime"></div>
 
+<!-- submit data on button-click-->
+		
+		<form method="post" action="resultsubmitted.php">
+			<input type="text" class="hidden" name="topic" value="<?php echo $topic; ?>">
+			<input type="text" class="hidden" name="attempted" value="<?php echo $attempted; ?>">
+			<input type="text" class="hidden" name="totalCorrect" value="<?php echo $totalCorrect; ?>">
+			<input type="text" class="hidden" name="totalWrong" value="<?php echo $totalWrong; ?>">
+			<input type="text" class="hidden" name="score" value="<?php echo $score; ?>">
+			<div><input class="back-button button" type="submit" name = "submit" value="Back to Home"></div>
+		</form>
 
 	<div class="title summary">
 		<h2>Summary</h2>
@@ -136,18 +146,35 @@ $topic = $_POST['topic'];
 				$result = mysqli_query($dbc, $querytop);
 				$row = mysqli_fetch_array($result);
 
-				$topperAttempted = $row['attempted'];
-				$topperCorrectAnswer = $row['correct'];
-				$topperWrongAnswer = $row['wrong'];
-				$topperScore = $row['score'];
-				$topperId = $row['userId'];
+				// current user may be the topper in this test. so first do a comparison to decide the real topper
+				if($score >= $row['score']) {
+					//current user is the new topper
+					$topperAttempted = $totalCorrect + $totalWrong;
+					$topperCorrectAnswer = $totalCorrect;
+					$topperWrongAnswer = $totalWrong;
+					$topperScore = $score;
+					$topperId = $_SESSION['userId'];
 
+					
+				} else {
+
+					$topperAttempted = $row['attempted'];
+					$topperCorrectAnswer = $row['correct'];
+					$topperWrongAnswer = $row['wrong'];
+					$topperScore = $row['score'];
+					$topperId = $row['userId'];
+
+					
+				}
 				//name of the topper
-				$queryTopperName = "SELECT firstname, surname FROM user where userId = '$topperId'";
-				$result = mysqli_query($dbc, $queryTopperName);
-				$row = mysqli_fetch_array($result);
-				$topperFirstname = $row['firstname'];
-				$topperSurname = $row['surname'];
+					$queryTopperName = "SELECT firstname, surname FROM user where userId = '$topperId'";
+					$result = mysqli_query($dbc, $queryTopperName);
+					$row = mysqli_fetch_array($result);
+					$topperFirstname = $row['firstname'];
+					$topperSurname = $row['surname'];
+
+				
+
 				mysqli_close($dbc);
 			?>		
 			<table>
@@ -172,10 +199,27 @@ $topic = $_POST['topic'];
 					<td><?php echo $topperScore; ?> / 10</td> <!-- total marks is 10 -->
 				</tr>
 			</table> 
+			
 		</div>
+
+		<!-- if current user is the topper, then congratulate him -->
+		<!-- use a modal, add social sharing on this later -->
+		<?php
+		if($topperId == $_SESSION['userId']) {
+			
+			echo "<div id='congratsMessageModal' class='modal'>
+				<div class='modal-content'>
+					<span class='close'>x</span>
+					<h3>Congratulations! You just topped the test! Keep it up, Champ!</h3>
+				</div>
+			</div>";
+		}
+		
+		?>
 	</div>
 	<hr>
-	<div class="details">
+	<div class="button details-button">Check Details</div>
+	<div class="details hidden">
 		<h1 class="title">Detailed Analysis</h1>
 		<div class="circle-graph">
 			<h2>Your Performance</h2>
@@ -223,18 +267,9 @@ $topic = $_POST['topic'];
 				<div class="suggestion-on-time"></div>
 			</div>
 		</div>
+	</div>	
 		
-		<!-- submit data on button-click-->
-		<
-		<form method="post" action="resultsubmitted.php">
-			<input type="text" class="hidden" name="topic" value="<?php echo $topic; ?>">
-			<input type="text" class="hidden" name="attempted" value="<?php echo $attempted; ?>">
-			<input type="text" class="hidden" name="totalCorrect" value="<?php echo $totalCorrect; ?>">
-			<input type="text" class="hidden" name="totalWrong" value="<?php echo $totalWrong; ?>">
-			<input type="text" class="hidden" name="score" value="<?php echo $score; ?>">
-			<div><input class="back-button" type="submit" name = "submit" value="Back to Home"></div>
-		</form>
 		
-	</div>
+	
 </body>
 </html>

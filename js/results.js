@@ -65,4 +65,22 @@ $(document).ready(function() {
 	$(".back-button").click(function() {
 		window.location = "index.php";
 	});
+
+
+	/* modal logic */
+	$(".close").click(function(){
+		$(".modal").css("display", "none");
+	});
+	/* if the user clicks anywhere on the window, close modal */
+	$(document).click(function(event) {
+		if(!$(event.target).closest("congratsMessageModal").length) {
+			$(".modal").css("display", "none");
+		}
+	});
+
+	/*details button to show details of test */
+	$(".details-button").click(function() {
+		$(".details").show();
+		$(".details-button").hide();
+	});
 });

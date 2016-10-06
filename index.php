@@ -7,17 +7,19 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="https://use.fontawesome.com/1c648de8d7.js"></script>
 	<script src="js/script.js"></script>
 </head>
 <body>
 	
-	<div class='container' >
+	
 		<?php
 
 			session_start();
 
 			if(isset($_SESSION['userId'])) {
 			
+
 				//user is logged in.
 
 			if ($_SESSION['usertype'] == 'admin') {
@@ -113,11 +115,60 @@
 
 			else {
 				// user not logged in.
-				echo "<a href='login.php'> Log in</a>";
+				//echo "<a href='login.php'> Log in</a>";
+			?>
+			<!-- the content below is visible to a user who is not logged in -->
+			<header>
+				<nav>
+					<a class="logo" href="#"><img src="images/logo.png" alt="Clear IBPS Logo"></a>
+					<div class="nav-elements">
+						<a href="">About Us</a>
+						<a href="">Pricing</a>
+						<a class="sign-in" href="">Sign In</a>
+					</div>
+				</nav>
+			</header>
+
+			<section class="main">
+				<section class="clearibps-intro"> 
+					<h1><span class="clear">Clear</span> <span class="ibps">IBPS</span></h1>
+					<p >Practice Tests, Earn Badges, Evaluate Yourself and Much More...</p>
+					<p class="short-desc">Clear IBPS offers you a complete solution to your preparation for online bank exams. You can practice over 30 Topic-wise tests, 10+ Full tests and get detailed feedback and analysis on your performance. With our platform, you can practice online as much as you want and launch a successful banking career.</p>
+				</section>
+				<aside class="join-us"> 
+					<div class="join-us-header"><p>Get Started Now!</p></div>
+					<p class="join-us-info"> Access to all our content with detailed feedback and online support <br>only @</p>
+					<div class="price">Rs 1100 / yr.</div>
+					<a class="member-button" href="signup.php">Become a member!</a>
+				</aside>
+			</section>
+			<footer>
+				<section class="four-column">
+					<a class="logo" href="#"><img src="images/logo.png" alt="Clear IBPS Logo"></a>
+					<p>&copy;Clear IBPS, All rights reserved.</p>
+				</section>
+				<section class="four-column">
+					<a class="footer-links" href="">About Us</a>
+					<a class="footer-links" href="">Pricing</a>
+					<a class="footer-links" href="">FAQ</a>
+					<a class="footer-links" href="">Terms of Service</a>
+				</section>
+				<section class="four-column">
+					<p>Call Us @ +91-9811579253<br>+91-7091320840</p>
+				</section>
+				<section class="four-column">
+					<p>Follow Us</p>
+					<a class="social" href=""><i class="fa fa-2x fa-facebook" aria-hidden="true"></i></a>
+					<a class="social" href=""><i class="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
+					<a class="social" href=""><i class="fa fa-2x fa-google-plus-official" aria-hidden="true"></i></a>
+					<a class="social" href=""><i class="fa fa-2x fa-linkedin" aria-hidden="true"></i></a>
+				</section>
+			</footer>
+		<?php
 			}
 		?>
 	 
 	 
-	</div>
+	
 </body>
 </html>
