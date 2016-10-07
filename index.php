@@ -124,7 +124,7 @@
 					<div class="nav-elements">
 						<a href="">About Us</a>
 						<a href="">Pricing</a>
-						<a class="sign-in" href="">Sign In</a>
+						<a class="sign-in" href="login.php" target="_blank">Sign In</a>
 					</div>
 				</nav>
 			</header>
@@ -142,10 +142,77 @@
 					<a class="member-button" href="signup.php">Become a member!</a>
 				</aside>
 			</section>
+			<section class="how-it-works">
+				<h2>How Clear<span class="ibps">IBPS</span> works</h2>
+				<p> Become a banker and achieve your dreams</p>
+
+				<section class="two-column">
+					<div class="icon icon-practice">
+						<img src="images/laptop.svg">
+					</div>	
+				</section>
+				<section class="two-column">
+					<h3>Unlimited Practice</h3>
+					<p>With our random question generator you can have unlimited topic-wise practice tests. Our extensive question bank ensures that each test experience is unique. You are only limited by the number of times you take the tests. 
+				</section>
+			
+				<section class="two-column">
+					<h3>Access Anytime, Anywhere</h3>
+					<p>Why Clear IBPS is the perfect practice platform for you? You can access all our content from anywhere. Whether you are on a bus or in your study room. It makes no difference! Connect and start practicing!</p>
+				</section>
+				<section class="two-column">
+					<div class="icon icon-access">
+						<img src="images/smartphone.svg">
+					</div>
+				</section>
+
+				<section class="two-column">
+					<div class="icon icon-trophy">
+						<img src="images/trophy.svg">
+					</div>
+				</section>
+				<section class="two-column">
+					<h3>Trophies and Badges</h3>
+					<p>You will earn trophies and badges as you progress through our tests. Badges indicate your skills and trophies show your dedication. They keep you motivated to perfom better. We might even surprise you with some awesome offers!</p>
+				</section>
+			</section>
+			<!--features-->
+			<section class="features">
+				<h2>Awesome things you will get at Clear<span class="ibps"> IBPS</span></h2>
+				<p>The perfect practice platform for everyone preparing for bank exams</p>
+
+				<section class="four-column features-column">
+					<img class="features-icon" src="images/notepad-2.svg">
+					<h3>Topic-Wise and Full Tests</h3>
+					<p>Our members get unlimited topic-wise practice tests from our extensive question bank. There are also 10+ full tests according to the pattern of IBPS exam.</p>
+					<a href="signup.php">Get Started</a>
+				</section>
+				<section class="four-column features-column">
+					<img class="features-icon" src="images/performance.svg">
+					<h3>Performance Reports</h3>
+					<p>Get detailed feedback on your performance in the test. Our <strong>time analysis tool</strong> tracks how you are spending your time. Manage your time better and improve.</p>
+					<a href="signup.php">Get Started</a>
+				</section>
+				<section class="four-column features-column">
+					<img class="features-icon" src="images/bar-chart.svg">
+					<h3>Comparative Analysis</h3>
+					<p>Boost your preparation by comparing yourself with others. Check your percentile score, topper's performance and much more</p>
+					<a href="signup.php">Get Started</a>
+				</section>
+				<section class="four-column features-column">
+					<img class="features-icon" src="images/alarm-1.svg">
+					<h3>Latest Updates and News</h3>
+					<p>Never miss an exam notification anymore. We will regularly update you with new exam dates and more!</p>
+					<a href="signup.php">Get Started</a>
+				</section>
+				
+			</section>
+			<!--footer-->
 			<footer>
 				<section class="four-column">
 					<a class="logo" href="#"><img src="images/logo.png" alt="Clear IBPS Logo"></a>
 					<p>&copy;Clear IBPS, All rights reserved.</p>
+					<a href="http://freepik.com">Icons designed by freepik.com</a>
 				</section>
 				<section class="four-column">
 					<a class="footer-links" href="">About Us</a>

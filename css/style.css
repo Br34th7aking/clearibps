@@ -2,6 +2,9 @@ html, body {
 	margin: 0;
 	padding: 0;
 }
+a:hover {
+	text-decoration: none;
+}
 
 #welcome-user {
 
@@ -94,6 +97,7 @@ header {
 .nav-elements {
 	display: inline-block;
 	float: right;
+
 
 }
 .nav-elements a {
@@ -208,14 +212,17 @@ header {
 footer {
 	height: 200px;
 	text-align: center;
+	padding-top: 50px;
 
 }
 .four-column {
+
+	vertical-align: top;
 	display: inline-block;
 	width: 20%;
 	margin-left: 3%;
-	padding-top: 30px;
 	color: #637a91;
+	padding-bottom: 20px;
 }
 .four-column:first-of-type {
 	margin-left: 0;
@@ -240,6 +247,55 @@ footer {
 }
 
 
+/* how-it-works section, features*/
+.how-it-works, .features {
+	margin-top: 50px;
+	text-align: center;
+	line-height: 24px;
+	color: #888;
+	font-size: 18px;
+}
+.two-column {
+	margin-top: 50px;
+	display: inline-block;
+	width: 40%;
+	margin-left: 5%;
+	text-align: left;
+	height: 300px;
+
+}
+.icon {
+	
+	border-radius: 5px;
+	text-align: center;
+}
+.icon > img {
+	width: 30%;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.icon-practice {
+	background-color: #fabea8;
+}
+
+.icon-access {
+	background-color: #b8f5d2;
+}
+.icon-trophy {
+	background: #c1e0f5;
+}
+
+/* extra css for features section */
+.features {
+	padding-top: 50px;
+	background-color: #f5f7f8;
+}
+.features-column {
+	padding-top: 30px;
+}
+.features-icon {
+	width: 40%;
+}
 /* media queries */
 @media (max-width: 400px) {
 	.category-list {
