@@ -13,27 +13,25 @@
 <body>
 	
 	
-		<?php
+	<?php
 
-			session_start();
+		session_start();
 
-			if(isset($_SESSION['userId'])) {
-			
-
-				//user is logged in.
-
+		if(isset($_SESSION['userId'])) {
+		
+			//user is logged in.
+			//check for admin or normal user.
 			if ($_SESSION['usertype'] == 'admin') {
 
 				$home_url = "http://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . "/admindash.php";
 				header("Location:" . $home_url);
 
 			}
-			else {
-
+		else {
 
 			$currentUser = $_SESSION['username'];
 			$currentUserId = $_SESSION['userId'];
-		?>
+	?>
 			<!--header	-->
 			
 			<div class='header'>
@@ -122,8 +120,8 @@
 				<nav>
 					<a class="logo" href="#"><img src="images/logo.png" alt="Clear IBPS Logo"></a>
 					<div class="nav-elements">
-						<a href="">About Us</a>
-						<a href="">Pricing</a>
+						<a href="about.html">About Us</a>
+						<a href="pricing.html">Pricing</a>
 						<a class="sign-in" href="login.php" target="_blank">Sign In</a>
 					</div>
 				</nav>
@@ -138,7 +136,7 @@
 				<aside class="join-us"> 
 					<div class="join-us-header"><p>Get Started Now!</p></div>
 					<p class="join-us-info"> Access to all our content with detailed feedback and online support <br>only @</p>
-					<div class="price">Rs 1100 / yr.</div>
+					<div class="price">Rs 2100 / yr.</div>
 					<a class="member-button" href="signup.php">Become a member!</a>
 				</aside>
 			</section>
@@ -215,10 +213,10 @@
 					<a href="http://freepik.com">Icons designed by freepik.com</a>
 				</section>
 				<section class="four-column">
-					<a class="footer-links" href="">About Us</a>
-					<a class="footer-links" href="">Pricing</a>
-					<a class="footer-links" href="">FAQ</a>
-					<a class="footer-links" href="">Terms of Service</a>
+					<a class="footer-links" href="about.html">About Us</a>
+					<a class="footer-links" href="pricing.html">Pricing</a>
+					<a class="footer-links" href="faq.html">FAQ</a>
+					<a class="footer-links" href="terms.html">Terms of Service</a>
 				</section>
 				<section class="four-column">
 					<p>Call Us @ +91-9811579253<br>+91-7091320840</p>

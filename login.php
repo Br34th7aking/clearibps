@@ -80,8 +80,8 @@
 			<a class="logo" href="#"><img src="images/logo.png" alt="Clear IBPS Logo"></a>
 			<div class="nav-elements">
 				<a href="signup.php">Register</a>
-				<a href="" target="_blank">FAQ</a>
-				<a href="" target="_blank">Contact</a>
+				<a href="faq.html" target="_blank">FAQ</a>
+				<a href="contact.html" target="_blank">Contact</a>
 			</div>
 		</nav>
 	</header>
@@ -106,7 +106,7 @@
 			</form>
 			<hr>
 			<div class="form-links">New User? <a href="signup.php"> Sign Up</a></div>
-			<div class="form-links"><a href="">I forgot my password</a></div>
+			<div class="form-links"><a href="resetpassword.php">I forgot my password</a></div>
 		</div>
 	</section>
 	<!--footer-->
@@ -117,10 +117,10 @@
 			<a href="http://freepik.com">Icons designed by freepik.com</a>
 		</section>
 		<section class="four-column">
-			<a class="footer-links" href="">About Us</a>
-			<a class="footer-links" href="">Pricing</a>
-			<a class="footer-links" href="">FAQ</a>
-			<a class="footer-links" href="">Terms of Service</a>
+			<a class="footer-links" href="about.html">About Us</a>
+			<a class="footer-links" href="pricing.html">Pricing</a>
+			<a class="footer-links" href="faq.html">FAQ</a>
+			<a class="footer-links" href="terms.html">Terms of Service</a>
 		</section>
 		<section class="four-column">
 			<p>Call Us @ +91-9811579253<br>+91-7091320840</p>
