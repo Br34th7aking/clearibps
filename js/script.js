@@ -14,7 +14,8 @@ var showHeader = function(category) {
 		case 'computer':
 			catValue = 'Computer';
 			break;
-
+		case 'english':
+			catValue = 'English';
 		default: 
 			catValue = "";
 	}

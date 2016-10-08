@@ -81,4 +81,5 @@ Oct 7, 2016
 Oct 8, 2016
 -----------
 1. Signup page is done. Only payment integration is left. 
-2. 
+2. Added password reset feature. But I can only access it when the website is live. 
+3. Started working on the homepage after login. Finished upto category display. 

@@ -31,31 +31,75 @@
 
 			$currentUser = $_SESSION['username'];
 			$currentUserId = $_SESSION['userId'];
-	?>
-			<!--header	-->
+	?>		
+			<!--header-->
+			<header>
+				<nav>
+					<a class="logo" href="#"><img src="images/logo.png" alt="Clear IBPS Logo"></a>
+					<div class="nav-elements">
+						<a href="index.php">Home</a>
+						<a href="changepassword.php">Change Password</a>
+						<a href="logout.php">Log Out</a>
+						<a href="leaderboard.php" target="_blank">Leader Board</a>
+					</div>
+				</nav>
+			</header>
+
+			<section class="user-info">
+				<div class="welcome-user">Welcome, <?php echo $currentUser; ?></div>
+				<div class="user-achievements">Trophies: </div>
+				<div class="user-achievements">Tests Taken: </div>
+				<div class="user-achievements">Accuracy: </div>
+			</section>
 			
-			<div class='header'>
-				<h1 class='logo'>Clear IBPS</h1>
-				<div class='welcome-user' id='welcome-user'>Welcome, <?php echo $currentUser; ?></div>
-
-			<!-- navigation -->
-				<div class="navigation">
-					<div class="nav-item"><a href="index.php">Practice Tests</a></div>
-					<div class="nav-item"><a href="">Test Series</a></div>
-					<div class="nav-item"><a href="">Performance Reports</a></div>
-					<div class="nav-item"><a href="logout.php">Log Out</a></div>
-				</div>
-			</div>
-		
-
+			<aside class="dashboard">
+				<div class="dashboard-items">Profile</div>
+				<div class="dashboard-items">Practice Tests</div>
+				<div class="dashboard-items">Full Tests</div>
+				<div class="dashboard-items">Performance Reports</div>
+				<div class="dashboard-items">News and Updates</div>
+			</aside>
+			
 			<!-- categories -->
+			<!--
 			<div class="category-list">
 				<div class="category col-md-3" id="reasoning">Reasoning</div>
 				<div class="category col-md-3" id="quantitative-aptitude">Quantitative Aptitude</div>
 				<div class="category col-md-3" id="general-awareness">General Awareness</div>
 				<div class="category col-md-3" id="computer">Computer</div>
 			</div>
+			-->
+			<section class="main-content">
+				<div class="category-list">
+					<h2>Choose a category to start practicing</h2><hr>
+					<div class="category" id="reasoning">
+						<p class="category-name">Reasoning</p>
+						<p class="total-tests">Total Tests: </p>
+						<p class="tests-taken">Tests Taken: </p>
+					</div>
+					<div class="category" id="quantitative-aptitude">
+						<p class="category-name">Quantitative Aptitude</p> 
+						<p class="total-tests">Total Tests: </p>
+						<p class="tests-taken">Tests Taken: </p>
+					</div>
+					<div class="category" id="general-awareness">
+						<p class="category-name">General Awareness</p>
+						<p class="total-tests">Total Tests: </p>
+						<p class="tests-taken">Tests Taken: </p>
+					</div>
+					<div class="category" id="english">
+						<p class="category-name">English</p>
+						<p class="total-tests">Total Tests: </p>
+						<p class="tests-taken">Tests Taken: </p>
+					</div>
+					<div class="category" id="computer">
+						<p class="category-name">Computer</p> 
+						<p class="total-tests">Total Tests: </p>
+						<p class="tests-taken">Tests Taken: </p>
+					</div>
 
+				</div>
+			</section>
 			<!-- show the selected category header -->
 			<div >
 				<h2 class="category-header"></h2>
