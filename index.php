@@ -31,6 +31,19 @@
 
 			$currentUser = $_SESSION['username'];
 			$currentUserId = $_SESSION['userId'];
+
+			require_once("connectVars.php");
+			$dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+
+			$query = "SELECT firstname, trophies, testsTaken, accuracy from user where userId = '$currentUserId'";
+			$result = mysqli_query($dbc, $query);
+			$row = mysqli_fetch_array($result);
+
+			$name = $row['firstname'];
+			$trophies = $row['trophies'];
+			$testsTaken = $row['testsTaken'];
+			$accuracy = $row['accuracy'];
+			mysqli_close($dbc);
 	?>		
 			<!--header-->
 			<header>
@@ -46,14 +59,14 @@
 			</header>
 
 			<section class="user-info">
-				<div class="welcome-user">Welcome, <?php echo $currentUser; ?></div>
-				<div class="user-achievements">Trophies: </div>
-				<div class="user-achievements">Tests Taken: </div>
-				<div class="user-achievements">Accuracy: </div>
+				<div class="welcome-user">Welcome, <?php echo $name; ?></div>
+				<div class="user-achievements"><img src="images/trophy.svg"> <?php echo $trophies; ?></div>
+				<div class="user-achievements">Tests Taken: <?php echo $testsTaken; ?></div>
+				<div class="user-achievements">Accuracy: <?php echo $accuracy; ?>%</div>
 			</section>
 			
 			<aside class="dashboard">
-				<div class="dashboard-items">Profile</div>
+				<div class="profile dashboard-items">Profile</div>
 				<div class="dashboard-items">Practice Tests</div>
 				<div class="dashboard-items">Full Tests</div>
 				<div class="dashboard-items">Performance Reports</div>
@@ -63,10 +76,10 @@
 			<!-- categories -->
 			<!--
 			<div class="category-list">
-				<div class="category col-md-3" id="reasoning">Reasoning</div>
-				<div class="category col-md-3" id="quantitative-aptitude">Quantitative Aptitude</div>
-				<div class="category col-md-3" id="general-awareness">General Awareness</div>
-				<div class="category col-md-3" id="computer">Computer</div>
+				<div class="category  id="reasoning">Reasoning</div>
+				<div class="category  id="quantitative-aptitude">Quantitative Aptitude</div>
+				<div class="category  id="general-awareness">General Awareness</div>
+				<div class="category  id="computer">Computer</div>
 			</div>
 			-->
 			<section class="main-content">
@@ -87,13 +100,13 @@
 						<p class="total-tests">Total Tests: </p>
 						<p class="tests-taken">Tests Taken: </p>
 					</div>
-					<div class="category" id="english">
-						<p class="category-name">English</p>
+					<div class="category" id="computer">
+						<p class="category-name">Computer</p> 
 						<p class="total-tests">Total Tests: </p>
 						<p class="tests-taken">Tests Taken: </p>
 					</div>
-					<div class="category" id="computer">
-						<p class="category-name">Computer</p> 
+					<div class="category" id="english">
+						<p class="category-name">English</p>
 						<p class="total-tests">Total Tests: </p>
 						<p class="tests-taken">Tests Taken: </p>
 					</div>
@@ -106,51 +119,58 @@
 				<div class="back-button">Go Back</div>
 			</div>
 			<!-- topic list -->
+			
 			<div class="topic-list">
 				<form method="post" action="test.php"> 
 				<!-- enclose topics in a form to send their value to test.php -->
-					<button type="submit" name="topic" value="1" class="topic col-md-3 topic-reasoning">Logical Reasoning</button>
-					<button type="submit" name="topic" value="2" class="topic col-md-3 topic-reasoning">Syllogism</button>
-					<button type="submit" name="topic" value="3" class="topic col-md-3 topic-reasoning">Blood Relations</button>
-					<button type="submit" name="topic" value="4" class="topic col-md-3 topic-reasoning">Input - Output</button>
-					<button type="submit" name="topic" value="5" class="topic col-md-3 topic-reasoning">Coding - Decoding</button>
-					<button type="submit" name="topic" value="6" class="topic col-md-3 topic-reasoning">Alphanumeric Series</button>
-					<button type="submit" name="topic" value="7" class="topic col-md-3 topic-reasoning">Ranking</button>
-					<button type="submit" name="topic" value="8" class="topic col-md-3 topic-reasoning">Data Sufficiency</button>
-					<button type="submit" name="topic" value="9" class="topic col-md-3 topic-reasoning">Coded Inequalities</button>
-					<button type="submit" name="topic" value="10" class="topic col-md-3 topic-reasoning">Seating Arrangement</button>
-					<button type="submit" name="topic" value="11" class="topic col-md-3 topic-reasoning">Puzzles</button>
-					<button type="submit" name="topic" value="12" class="topic col-md-3 topic-reasoning">Tabulation</button>
-					<button type="submit" name="topic" value="13" class="topic col-md-3 topic-quantitative-aptitude">Simplification</button>
-					<button type="submit" name="topic" value="14" class="topic col-md-3 topic-quantitative-aptitude">Ratio and Proportion</button>
-					<button type="submit" name="topic" value="15" class="topic col-md-3 topic-quantitative-aptitude">Percentage</button>
-					<button type="submit" name="topic" value="16" class="topic col-md-3 topic-quantitative-aptitude">Number System</button>
-					<button type="submit" name="topic" value="17" class="topic col-md-3 topic-quantitative-aptitude">Profit and Loss</button>
-					<button type="submit" name="topic" value="18" class="topic col-md-3 topic-quantitative-aptitude">Simple Interest</button>
-					<button type="submit" name="topic" value="19" class="topic col-md-3 topic-quantitative-aptitude">Compound Interest</button>
-					<button type="submit" name="topic" value="20" class="topic col-md-3 topic-quantitative-aptitude">Surds and Indices</button>
-					<button type="submit" name="topic" value="21" class="topic col-md-3 topic-quantitative-aptitude">Alligations</button>
-					<button type="submit" name="topic" value="22" class="topic col-md-3 topic-quantitative-aptitude">Work and Time</button>
-					<button type="submit" name="topic" value="23" class="topic col-md-3 topic-quantitative-aptitude">Time and Distance</button>
-					<button type="submit" name="topic" value="24" class="topic col-md-3 topic-quantitative-aptitude">Mensuration</button>
-					<button type="submit" name="topic" value="25" class="topic col-md-3 topic-quantitative-aptitude">Sequences and Series</button>
-					<button type="submit" name="topic" value="26" class="topic col-md-3 topic-quantitative-aptitude">Permutations and Combinations</button>
-					<button type="submit" name="topic" value="27" class="topic col-md-3 topic-quantitative-aptitude">Probability</button>
-					<button type="submit" name="topic" value="28" class="topic col-md-3 topic-quantitative-aptitude">Data Interpretation</button>
-					<button type="submit" name="topic" value="29" class="topic col-md-3 topic-general-awareness">Current Affairs</button>
-					<button type="submit" name="topic" value="30" class="topic col-md-3 topic-general-awareness">Banking Awareness</button>
-					<button type="submit" name="topic" value="31" class="topic col-md-3 topic-general-awareness">Marketing</button>
-					<button type="submit" name="topic" value="32" class="topic col-md-3 topic-computer">Hardware and Software</button>
-					<button type="submit" name="topic" value="33" class="topic col-md-3 topic-computer">Database</button>
-					<button type="submit" name="topic" value="34" class="topic col-md-3 topic-computer">Network and Internet</button>
-					<button type="submit" name="topic" value="35" class="topic col-md-3 topic-computer">Number System</button>
-					<button type="submit" name="topic" value="36" class="topic col-md-3 topic-computer">Security</button>
-					<button type="submit" name="topic" value="37" class="topic col-md-3 topic-computer">MS Windows and Office</button>
+					<button type="submit" name="topic" value="1" class="topic topic-reasoning">Logical Reasoning</button>
+					<button type="submit" name="topic" value="2" class="topic topic-reasoning">Syllogism</button>
+					<button type="submit" name="topic" value="3" class="topic topic-reasoning">Blood Relations</button>
+					<button type="submit" name="topic" value="4" class="topic topic-reasoning">Input - Output</button>
+					<button type="submit" name="topic" value="5" class="topic topic-reasoning">Coding - Decoding</button>
+					<button type="submit" name="topic" value="6" class="topic topic-reasoning">Alphanumeric Series</button>
+					<button type="submit" name="topic" value="7" class="topic topic-reasoning">Ranking</button>
+					<button type="submit" name="topic" value="8" class="topic topic-reasoning">Data Sufficiency</button>
+					<button type="submit" name="topic" value="9" class="topic topic-reasoning">Coded Inequalities</button>
+					<button type="submit" name="topic" value="10" class="topic topic-reasoning">Seating Arrangement</button>
+					<button type="submit" name="topic" value="11" class="topic topic-reasoning">Puzzles</button>
+					<button type="submit" name="topic" value="12" class="topic topic-reasoning">Tabulation</button>
+					<button type="submit" name="topic" value="13" class="topic topic-quantitative-aptitude">Simplification</button>
+					<button type="submit" name="topic" value="14" class="topic topic-quantitative-aptitude">Ratio and Proportion</button>
+					<button type="submit" name="topic" value="15" class="topic topic-quantitative-aptitude">Percentage</button>
+					<button type="submit" name="topic" value="16" class="topic topic-quantitative-aptitude">Number System</button>
+					<button type="submit" name="topic" value="17" class="topic topic-quantitative-aptitude">Profit and Loss</button>
+					<button type="submit" name="topic" value="18" class="topic topic-quantitative-aptitude">Simple Interest</button>
+					<button type="submit" name="topic" value="19" class="topic topic-quantitative-aptitude">Compound Interest</button>
+					<button type="submit" name="topic" value="20" class="topic topic-quantitative-aptitude">Surds and Indices</button>
+					<button type="submit" name="topic" value="21" class="topic topic-quantitative-aptitude">Alligations</button>
+					<button type="submit" name="topic" value="22" class="topic topic-quantitative-aptitude">Work and Time</button>
+					<button type="submit" name="topic" value="23" class="topic topic-quantitative-aptitude">Time and Distance</button>
+					<button type="submit" name="topic" value="24" class="topic topic-quantitative-aptitude">Mensuration</button>
+					<button type="submit" name="topic" value="25" class="topic topic-quantitative-aptitude">Sequences and Series</button>
+					<button type="submit" name="topic" value="26" class="topic topic-quantitative-aptitude">Permutations and Combinations</button>
+					<button type="submit" name="topic" value="27" class="topic topic-quantitative-aptitude">Probability</button>
+					<button type="submit" name="topic" value="28" class="topic topic-quantitative-aptitude">Data Interpretation</button>
+					<button type="submit" name="topic" value="29" class="topic topic-general-awareness">Current Affairs</button>
+					<button type="submit" name="topic" value="30" class="topic topic-general-awareness">Banking Awareness</button>
+					<button type="submit" name="topic" value="31" class="topic topic-general-awareness">Marketing</button>
+					<button type="submit" name="topic" value="32" class="topic topic-computer">Hardware and Software</button>
+					<button type="submit" name="topic" value="33" class="topic topic-computer">Database</button>
+					<button type="submit" name="topic" value="34" class="topic topic-computer">Network and Internet</button>
+					<button type="submit" name="topic" value="35" class="topic topic-computer">Number System</button>
+					<button type="submit" name="topic" value="36" class="topic topic-computer">Security</button>
+					<button type="submit" name="topic" value="37" class="topic topic-computer">MS Windows and Office</button>
+					<button type="submit" name="topic" value="38" class="topic topic-english">Reading Comprehension</button>
+					<button type="submit" name="topic" value="39" class="topic topic-english">Cloze Test</button>
+					<button type="submit" name="topic" value="40" class="topic topic-english">Fill in the blanks</button>
+					<button type="submit" name="topic" value="41" class="topic topic-english">Multiple Meaning / Error Spotting</button>
+					<button type="submit" name="topic" value="42" class="topic topic-english">Paragraph Complete / Sentence Correction</button>
+					<button type="submit" name="topic" value="43" class="topic topic-english">Para Jumbles</button>
+					<button type="submit" name="topic" value="44" class="topic topic-english">Miscellaneous</button>
+					
 				</form>
-
-
 			</div>
-
+			
 			<?php
 			}
 			}

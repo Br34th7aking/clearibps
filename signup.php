@@ -39,12 +39,12 @@
 
 					mysqli_query($dbc, $query) or die("Error inserting data into database");
 
-					echo "<p>Account created successfully. You can now <a href=''>Log In</a>.</p>";
+					echo "<p>Account created successfully. You can now <a href='login.php'>Log In</a>.</p>";
 					exit();
 
 				}	
 				else {
-					echo "<p>Username already exists.</p>";
+					echo "<h3>Username already exists.Please choose a different one.</h3>";
 					$username = "";
 				}
 			} 

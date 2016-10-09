@@ -75,14 +75,80 @@
 	$totalTime = $timeCorrectAnswer + $timeWrongAnswer + $timeUnanswered;
 	//echo "Total time: $totalTime";
 	
+
 ?>
 
 <?php 
 //topic id and user info
+//update user stats.
 session_start();
 
 $username = $_SESSION['username'];
+$userId = $_SESSION['userId'];
 $topic = $_POST['topic'];
+
+
+//get current stats
+$query = "SELECT userLevel, trophies, testsTaken, accuracy, totalTime, correctTime FROM user where userId = '$userId'";
+$result = mysqli_query($dbc, $query);
+$row = mysqli_fetch_array($result);
+
+//increase the number of tests
+$totalTests = $row['testsTaken'];
+$totalTests++;
+
+$currentTrophies = $row['trophies'];
+$accuracy = $row['accuracy'];
+$totalTimeTaken =  $row['totalTime'];
+$correctTime = $row['correctTime'];
+$currentLevel = $row['userLevel'];
+
+//update trophies.
+// marks per question is 1, so total questions = total marks.
+$percentMarks = round(($score / $totalQuestions) * 100);
+$trophiesAwarded = 0;
+if($percentMarks > 80) {
+	$trophiesAwarded = 35;
+}
+else if ($percentMarks > 70) {
+	$trophiesAwarded = 20;
+}
+else if ($percentMarks > 60) {
+	$trophiesAwarded = 10;
+}
+else if ($percentMarks > 50) {
+	$trophiesAwarded = 5;
+}
+else if ($percentMarks > 40) {
+	$trophiesAwarded = 2;
+}
+else if ($percentMarks > 30) {
+	$trophiesAwarded = -5;
+}
+else if ($percentMarks > 20) {
+	$trophiesAwarded = -10;
+}
+else {
+	$trophiesAwarded = -20;
+}
+
+$currentTrophies += $trophiesAwarded;
+
+// update accuracy, totalTime & correctTime
+//formula for accuracy
+//1. (prev acc x prev number of teststaken + new test marks )/ totaltests;
+$accuracy = round(($accuracy * ($totalTests - 1) + $percentMarks) / $totalTests, 2);
+$totalTimeTaken += $totalTime;
+$correctTime += $timeCorrectAnswer;
+
+//update user level 
+if($totalTests >= ($currentLevel * ($currentLevel + 1) * 5)/2) { //base level is 5
+	$currentLevel++;
+}
+
+$query = "UPDATE user SET userLevel = '$currentLevel', trophies = '$currentTrophies', testsTaken = '$totalTests', totalTime = '$totalTimeTaken',
+		  correctTime = '$correctTime', accuracy = '$accuracy' WHERE userId = '$userId'";
+mysqli_query($dbc, $query);
 ?>
 <!-- hidden data for results -->
 <!-- for pie chart -->
@@ -175,7 +241,7 @@ $topic = $_POST['topic'];
 
 				
 
-				mysqli_close($dbc);
+				
 			?>		
 			<table>
 				<tr>
@@ -205,8 +271,8 @@ $topic = $_POST['topic'];
 		<!-- if current user is the topper, then congratulate him -->
 		<!-- use a modal, add social sharing on this later -->
 		<?php
-		if($topperId == $_SESSION['userId']) {
-			
+		if($topperScore == $score) { 
+			//compare the scores because we have to compare current score with topper's score. 
 			echo "<div id='congratsMessageModal' class='modal'>
 				<div class='modal-content'>
 					<span class='close'>x</span>
@@ -267,6 +333,76 @@ $topic = $_POST['topic'];
 				<div class="suggestion-on-time"></div>
 			</div>
 		</div>
+
+		<!-- questions and solutions -->
+		<h2> Questions And Solutions</h2>
+		<table class="solutions">
+			<tr>
+				<th>Q.No</th>
+				<th>Question</th>
+				<th>Your Answer</th>
+				<th>Correct Answer</th>
+				<th>Time Taken</th>
+				<th>Solution</th>
+			</tr>
+			<?php
+				$i = 1;
+				while($i <= $totalQuestions) {
+
+					// get time spent on the question 
+					$timetaken = intval($_POST["time-taken$i"]);
+					if (isset($_POST["ans-question$i"])) {
+						$data = explode('-', $_POST["ans-question$i"]);
+					}
+					
+					
+					//get user answer
+					if(!empty($_POST["ans-question$i"])) {
+						$userChoice = $data[1];
+					}
+					else {
+						$userChoice = "Not Attempted";
+					}
+
+					// get correct ans from database
+					// get questionId 
+					
+					$questionId = $_POST["question$i"];
+					$query = "SELECT * from questionbank where questionId = '$questionId'";
+					$result = mysqli_query($dbc, $query);
+					$row = mysqli_fetch_array($result);
+					$correctAns = $row['correctans'];
+					$statement = $row['statement'];
+			?>
+			<tr>
+				<td><?php echo $i; ?></td>
+				<td><?php echo $statement; ?></td>
+				<td><?php echo $userChoice; 
+						if ($userChoice != "Not Attempted") {
+							if($userChoice == $correctAns) {
+								echo "<img src='images/success.svg'>";
+							}
+							else {
+								echo "<img src='images/error.svg'>";
+							}
+
+						}
+						
+					?>
+						  	
+				</td>
+				<td><?php echo $correctAns; ?></td>
+				<td><?php echo round(($timetaken / 60)) . ":min:" . ($timetaken % 60) . "sec"; ?></td>
+				<td>Solution Later</td>
+			</tr>
+			<?php
+					$i++;
+
+					
+				}
+				mysqli_close($dbc);
+			?>
+		</table>
 	</div>	
 		
 		

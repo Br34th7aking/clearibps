@@ -83,3 +83,22 @@ Oct 8, 2016
 1. Signup page is done. Only payment integration is left. 
 2. Added password reset feature. But I can only access it when the website is live. 
 3. Started working on the homepage after login. Finished upto category display. 
+
+Oct 9, 2016
+-------------
+1. Index page done. Added 'English' Category
+2. 'Go back' button has a nice look now. 
+3. User can now view his questions and answers in a nice table, with his correct and wrong answers. Solutions are not yet added to database. so not yet visible. Though i have given a column for that. 
+4. finished the front end of profile page. 
+5. User stats table - it will contain user id, user level, trophies, accuracy, all time best rank, tests taken, total time and correct time. All except are integers. This table will be updated every time user takes a test.  
+6. trophies feature is functional.
+7. User stats are updating nicely with every test taken.
+8. User can now get motivational quotes. Made an array and stored some quotes in it. 
+9. Links are working.
+10. User can see next target and trophy difference. 
+11. For leveling up, i am using a sequence where difference between two terms is in a.p. I also kept the first term to be zero. So the n+1 th
+term of this sequence becomes [n(N+1)/2]d. d is the c.d. of the ap. Total tests = n+1th term for leveling up. Currently d is set to 5.
+12. Level up functionality is working!
+13. User can see competitors and their points. I want to plot a graph with this later. 
+14. User is welcomed by his firstname. 
+

@@ -14,11 +14,10 @@ header {
 	
 }
 /* header navigation*/
+
 .nav-elements {
 	display: inline-block;
 	float: right;
-
-
 }
 .nav-elements a {
 	transition: background 0.5s;
@@ -29,7 +28,6 @@ header {
 	background: #fff;
 	border-radius: 5px;
 }
-
 .nav-elements a:hover {
 	color: white;
 	background: #637a91;
@@ -47,13 +45,15 @@ header {
 .nav-item {
 	display: inline-block;
 	padding: 10px 5%;
-
 }
 .nav-item > a {
 	text-decoration: none;
 }
 
 /* user-info bar */
+.user-achievements img {
+	width: 18%;
+}
 .user-info {
 	width: 100%;
 	height: 50px;
@@ -68,7 +68,6 @@ header {
 .welcome-user {
 	width: 40%;
 	margin-left: 50px;
-
 }
 .user-achievements {
 	width: 15%;
@@ -98,8 +97,6 @@ header {
 	width: 70%;
 	margin-right: 5%;
 	float: right;
-
-
 }
 
 .category {
@@ -138,44 +135,44 @@ header {
 	float: left;
 	margin-left: 10px;
 }
-/*
-#reasoning {
-	background: #7887ee;
-}
-
-#quantitative-aptitude {
-	background: #ecbe6c;
-}
-#general-awareness {
-	background: #85d37e;
-}
-#computer {
-	background: #f26f66;
-}
-*/
 /*topics */
-.topic {
-	margin: 0 2%;
+.topic-list {
+	width: 70%;
+	float: right;
 	margin-top: 30px;
-	padding: 10px 20px;
-	color: white;
-	background: #25b5e9;
-	border-radius: 10px;
-	text-align: center;
-	font-size: 1.2em;
-
-
+	margin-right: 3%;
 }
-
+.topic {
+	width: 70%;
+	display: block;
+	border: 0;
+	background-color: #f3f4f5;
+	padding: 10px 20px;
+	margin-top: 10px;
+	font-size: 18px;
+}
 .topic:hover {
+	background-color: #b8f5d2;
+	color: #637a91;
 	cursor: pointer;
 	
 }
+.back-button {
+	background-color: #637a91;
+	color: #fff;
+	font-size: 16px;
+	width: 40%;
+	padding: 10px 20px;
+	text-align: center;
 
+}
+.back-button:hover {
+	background-color: #637aaa;
+	cursor: pointer;
+}
 /* css for index page when user is not logged in */
 
 /*header section */
-
 
 .sign-in {
 	color: white !important;
@@ -359,6 +356,11 @@ footer {
 .features-icon {
 	width: 40%;
 }
+
+
+
+
+
 /* media queries */
 @media (max-width: 400px) {
 	.category-list {

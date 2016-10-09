@@ -86,6 +86,7 @@
 				
 		
 				echo "<div class='question' id='question$i'>
+				<input type='text' class='hidden' id='question$i' name='question$i' value='$questionId'>
 				<input type='text' class='hidden' id='time-taken$i' name='time-taken$i' value='0'>
 					  <h2> Question $i</h2>
 					  <hr>	

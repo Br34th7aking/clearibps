@@ -16,6 +16,7 @@ var showHeader = function(category) {
 			break;
 		case 'english':
 			catValue = 'English';
+			break;
 		default: 
 			catValue = "";
 	}
@@ -70,4 +71,8 @@ $(document).ready(function() {
 
 	});
 */
+	/* go to profile page when user clicks profile */
+	$(".profile").click(function() {
+		window.location.href= "profile.php";
+	});
 });
